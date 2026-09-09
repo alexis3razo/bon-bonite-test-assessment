@@ -11,7 +11,8 @@ export abstract class BasePage {
      * Waits for the network to be idle, ensuring the page is fully loaded.
      */
     protected async waitForPageLoad(): Promise<void> {
-        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('load').catch(() => undefined);
     }
 
     /**
@@ -19,6 +20,7 @@ export abstract class BasePage {
      */
     protected async clickElement(locator: Locator): Promise<void> {
         await locator.waitFor({ state: 'visible' });
+        await locator.scrollIntoViewIfNeeded();
         await locator.click();
     }
 

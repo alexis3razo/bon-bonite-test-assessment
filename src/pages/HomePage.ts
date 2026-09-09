@@ -17,6 +17,7 @@ export class HomePage extends BasePage {
     async goto(): Promise<void> {
         await this.page.goto('/', { waitUntil: 'domcontentloaded' });
         await this.page.waitForLoadState('networkidle').catch(() => undefined);
+        await this.header.acceptCookies();
     }
 
     /**

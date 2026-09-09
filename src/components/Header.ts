@@ -3,6 +3,9 @@ import { BasePage } from '../pages/BasePage';
 
 export class Header extends BasePage {
 
+    // Accept Cookies Button
+    private readonly acceptCookiesButton: Locator;
+
     // Navigation Menus
     private readonly shoesMenu: Locator;
     private readonly bagsMenu: Locator;
@@ -17,6 +20,8 @@ export class Header extends BasePage {
     constructor(page: Page) {
         super(page);
 
+        this.acceptCookiesButton = page.getByRole('button', { name: 'Aceptar todo' });
+
         this.shoesMenu = page.locator('a[href*="/categoria-producto/zapatos-mujer/"], a:has-text("Zapatos")').first();
         this.bagsMenu = page.locator('a[href*="/categoria-producto/bolsos-mujer/"], a:has-text("Bolsos")').first();
         this.beltsMenu = page.locator('a[href*="/categoria-producto/cinturones-mujer/"], a:has-text("Cinturones")').first();
@@ -28,6 +33,11 @@ export class Header extends BasePage {
     }
 
     // --- Navigation Methods ---
+    async acceptCookies(): Promise<void> {
+        if (await this.acceptCookiesButton.count()) {
+            await this.clickElement(this.acceptCookiesButton);
+        }
+    }
 
     async navigateToShoes(): Promise<void> {
         await this.clickElement(this.shoesMenu);
