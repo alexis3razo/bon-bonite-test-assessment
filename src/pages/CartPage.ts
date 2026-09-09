@@ -14,7 +14,7 @@ export class CartPage extends BasePage {
         this.header = new Header(page);
 
         this.proceedToCheckoutButton = page.getByRole('link', { name: 'Finalizar compra' });
-        this.cartTotalAmount = page.locator('.order-total .amount');
+        this.cartTotalAmount = page.locator('.order-total .amount').last();
     }
 
     /**
