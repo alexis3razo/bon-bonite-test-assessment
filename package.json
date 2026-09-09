@@ -1,0 +1,31 @@
+{
+  "name": "bon-bonite-test-assessment",
+  "version": "1.0.0",
+  "description": "Automated test suite for Bon-bonite e-commerce website using Playwright and TypeScript, following the Page Object Model pattern.",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:registration": "playwright test tests/e2e/registration.spec.ts",
+    "test:account": "playwright test tests/e2e/account-update.spec.ts",
+    "test:purchase": "playwright test tests/e2e/purchase.spec.ts",
+    "report": "playwright show-report",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.ts\""
+  },
+  "author": "Alexis Erazo",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.20.1",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.12.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}
